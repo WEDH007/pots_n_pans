@@ -13,7 +13,7 @@ const config: Config = {
         falling: "falling 20s linear infinite",
         falling1: "falling1 34s linear infinite",
         falling2: "falling2 42s linear infinite",
-        falling3: "falling3 32 linear infinite",
+        falling3: "falling3 32s linear infinite",
         wiggle: "wiggle 1s ease-in-out infinite",
       },
       keyframes: {

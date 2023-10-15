@@ -4,6 +4,7 @@ export interface SmallRecipeProps {
   key: string;
   content: string;
   printId: (id: number) => void;
+  classes: string[];
 }
 
 type RecipeData = Record<
@@ -15,7 +16,7 @@ type RecipeData = Record<
   }
 >;
 
-const LargeRecipe = ({ key, content, printId }: SmallRecipeProps) => {
+const LargeRecipe = ({ key, content, printId, classes }: SmallRecipeProps) => {
   const [data, setData] = useState<RecipeData | undefined>();
 
   useEffect(() => {
@@ -40,7 +41,13 @@ const LargeRecipe = ({ key, content, printId }: SmallRecipeProps) => {
       <ul>
         {data[content]?.ingredients.map((ingredient, index) => (
           <li key={index.toString()} className="flex items-center">
-            <h1 className="text-md font-indie font-bold">
+            <h1
+              className={`text-md font-indie font-bold ${
+                classes.some((cls) => ingredient.includes(cls))
+                  ? "font-bold text-green-900 underline"
+                  : ""
+              }`}
+            >
               {ingredient.substring(0, ingredient.length - 13)}
             </h1>
           </li>

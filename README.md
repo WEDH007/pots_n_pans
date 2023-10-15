@@ -22,4 +22,3 @@ The 3 main challenges we faced were getting an accurate object detection model, 
 On the back end, gaining a better understanding of how components interface in a web-app
 On the front end, we learned how to add more complex animations to our user designs to create a more enjoyable and engaging user experience. 
 
-## How do I deploy this?

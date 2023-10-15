@@ -13,9 +13,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <FallingVeggies />
-
-      <main className="flex h-screen w-screen flex-col items-center justify-center">
+      <main className="flex h-screen w-full flex-col items-center justify-center">
         <Link
           href="/upload"
           className=" delay-80 rounded-full bg-purple-300 px-5 py-4 drop-shadow-lg transition ease-in-out hover:-translate-y-2"

@@ -1,7 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import NotLoading from "./NotLoading";
+import Loading from "./Loading";
+import RecipesData from "./RecipesData";
+import FallingVeggies from "./FallingVeggies";
 
 const Upload = () => {
   const [fileUpload, setFileUpload] = useState<File | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingDone, setIsLoadingDone] = useState(false);
+  const [recipesData, setRecipesData] = useState({});
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
@@ -39,9 +46,10 @@ const Upload = () => {
           const requestBody = {
             input: {
               img: base64Image,
-              threshold: 0.5,
+              threshold: 0.3,
             },
           };
+          setIsLoading(true);
           console.log(requestBody);
           return waitForResponse(
             fetch("https://api.runpod.ai/v2/mi1w7cfskbr6up/runsync", {
@@ -55,7 +63,9 @@ const Upload = () => {
               return res.json() as Promise<ApiResponse>;
             }),
           ).then((data: ApiResponse) => {
-            console.log(data);
+            setIsLoading(false);
+            setIsLoadingDone(true);
+            setRecipesData(data);
           });
           //   fetch("https://api.runpod.ai/v2/mi1w7cfskbr6up/run", {
           //     method: "POST",
@@ -81,22 +91,22 @@ const Upload = () => {
   };
 
   return (
-    <div className="flex gap-20">
-      <div className="delay-80 flex flex-row items-center justify-center rounded-full bg-red-100 py-3 pl-10 pr-4 drop-shadow-xl transition-colors duration-500 hover:bg-green-300">
-        <input
-          className="font-indie text-xl"
-          type="file"
-          accept="image/*"
-          onChange={handleFileChange}
-        />
-      </div>
-      <button
-        className="delay-80 rounded-full border-black bg-green-300 px-7 py-3 font-indie text-xl font-bold drop-shadow-xl transition ease-in-out hover:-translate-y-2 "
-        onClick={handleFileUpload}
-      >
-        Find me Recipes!
-      </button>
-    </div>
+    <>
+      {!isLoadingDone ? (
+        isLoading ? (
+          <Loading />
+        ) : (
+          <div>
+            <NotLoading
+              handleFileUpload={handleFileUpload}
+              handleFileChange={handleFileChange}
+            />
+          </div>
+        )
+      ) : (
+        <h1>{JSON.stringify(recipesData)}</h1>
+      )}
+    </>
   );
 };
 export default Upload;

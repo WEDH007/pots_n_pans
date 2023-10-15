@@ -11,6 +11,10 @@ const config: Config = {
       animation: {
         jump: "jump 0.3s",
         falling: "falling 15s linear infinite",
+        falling1: "falling1 14s linear infinite",
+        falling2: "falling2 13s linear infinite",
+        falling3: "falling3 13.5s linear infinite",
+        wiggle: "wiggle 1s ease-in-out infinite",
       },
       keyframes: {
         jump: {
@@ -25,14 +29,66 @@ const config: Config = {
             top: "-10%",
           },
           "10%": { opacity: "1" },
-          "20%": { transform: "translateY(-20px) rotate(45deg)" },
-          "40%": { transform: "translateY(-20px) rotate(90deg)" },
-          "60%": { transform: "translateY(20px) rotate(180deg)" },
-          "80%": { transform: "translateY(-20px) rotate(180deg)" },
+          "20%": { transform: "translateY(-400px) rotate(45deg)" },
+          "40%": { transform: "translateY(-400px) rotate(90deg)" },
+          "60%": { transform: "translateY(400px) rotate(180deg)" },
+          "80%": { transform: "translateY(-400px) rotate(180deg)" },
           "100%": {
             transform: "translateY(-20px) rotate(225deg)",
             top: "110%",
           },
+        },
+        falling1: {
+          "0%": {
+            transform: "translateY(20px) rotate(0deg)",
+            opacity: "0",
+            top: "-10%",
+          },
+          "10%": { opacity: "1" },
+          "20%": { transform: "translateY(-200px) rotate(45deg)" },
+          "40%": { transform: "translateY(-200px) rotate(90deg)" },
+          "60%": { transform: "translateY(200px) rotate(180deg)" },
+          "80%": { transform: "translateY(-200px) rotate(180deg)" },
+          "100%": {
+            transform: "translateY(-20px) rotate(225deg)",
+            top: "110%",
+          },
+        },
+        falling2: {
+          "0%": {
+            transform: "translateY(20px) rotate(0deg)",
+            opacity: "0",
+            top: "-10%",
+          },
+          "10%": { opacity: "1" },
+          "20%": { transform: "translateY(-400px) rotate(45deg)" },
+          "40%": { transform: "translateY(-200px) rotate(90deg)" },
+          "60%": { transform: "translateY(200px) rotate(180deg)" },
+          "80%": { transform: "translateY(-200px) rotate(180deg)" },
+          "100%": {
+            transform: "translateY(-20px) rotate(225deg)",
+            top: "110%",
+          },
+        },
+        falling3: {
+          "0%": {
+            transform: "translateY(20px) rotate(0deg)",
+            opacity: "0",
+            top: "-10%",
+          },
+          "10%": { opacity: "1" },
+          "20%": { transform: "translateY(-400px) rotate(45deg)" },
+          "40%": { transform: "translateY(-400px) rotate(90deg)" },
+          "60%": { transform: "translateY(400px) rotate(180deg)" },
+          "80%": { transform: "translateY(-400px) rotate(180deg)" },
+          "100%": {
+            transform: "translateY(-20px) rotate(225deg)",
+            top: "110%",
+          },
+        },
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
         },
       },
     },

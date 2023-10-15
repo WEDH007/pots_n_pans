@@ -3,38 +3,20 @@ import NotLoading from "./NotLoading";
 import Loading from "./Loading";
 import RecipesData from "./RecipesData";
 import FallingVeggies from "./FallingVeggies";
-
-interface Recipes {
-  delayTime: number;
-  executionTime: number;
-  id: string;
-  output: string[];
-  status: string;
-}
+import { type Recipes } from "./RecipesData";
 
 const Upload = () => {
   const [fileUpload, setFileUpload] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingDone, setIsLoadingDone] = useState(false);
-  const [recipesData, setRecipesData] = useState<Recipes>();
+  const [recipesData, setRecipesData] = useState<Recipes | undefined>(
+    undefined,
+  );
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     setFileUpload(selectedFile ?? null);
   };
-
-  async function waitForResponse(apiCall: Promise<Recipes>) {
-    const response = await apiCall;
-
-    console.log(response);
-
-    if (response.status === "IN_QUEUE") {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      return waitForResponse(apiCall);
-    } else {
-      return response;
-    }
-  }
 
   function uploadFile() {
     if (
@@ -94,7 +76,10 @@ const Upload = () => {
           </div>
         )
       ) : (
-        <h1>{JSON.stringify(recipesData)}</h1>
+        <RecipesData
+          recipesData={recipesData}
+          setIsLoadingDone={setIsLoadingDone}
+        />
       )}
     </>
   );

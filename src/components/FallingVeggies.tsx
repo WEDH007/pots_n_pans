@@ -21,7 +21,7 @@ const FallingVeggies = () => {
   }
 
   return (
-    <section className="absolute -z-[10] flex h-full w-full items-center justify-between overflow-hidden">
+    <section className="absolute -z-[10] flex h-full w-full items-center justify-between overflow-hidden opacity-[60%]">
       <div className="pointer-events-none absolute left-0 top-0 flex h-full w-full items-center justify-around overflow-hidden">
         <div className="animate-falling">
           <Image

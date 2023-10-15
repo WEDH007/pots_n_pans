@@ -2,6 +2,9 @@
 
 <img width="1294" alt="Untitled" src="https://github.com/ghubnerr/pots_n_pans/assets/144561702/c9acc9d9-0100-4b78-958b-9a0fcb5dc837">
 
+<img width="1191" alt="Screenshot 2023-10-15 at 5 02 22 AM" src="https://github.com/ghubnerr/pots_n_pans/assets/144561702/13c3377a-c22c-4e21-95da-204e69a88d2b">
+
+
 Let's Cook is a website that offers an effortless way for users to minimize food waste. Through Let's Cook, users have the ability to upload a photo of the contents of their refrigerator. The website then provides viable recipes using the ingredients present in their fridge.
 
 ## What's next for Let's Cook? 

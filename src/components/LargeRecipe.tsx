@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
-import fs from "fs";
+import React, { useState, useEffect } from "react";
 
-interface SmallRecipeProps {
+export interface SmallRecipeProps {
   key: string;
   content: string;
-  setSpotlightId: React.Dispatch<React.SetStateAction<number | undefined>>;
 }
 
 type RecipeData = Record<
@@ -16,11 +14,7 @@ type RecipeData = Record<
   }
 >;
 
-const SmallRecipe: React.FC<SmallRecipeProps> = ({
-  key,
-  content,
-  setSpotlightId,
-}) => {
+const LargeRecipe = ({ key, content }: SmallRecipeProps) => {
   const [data, setData] = useState<RecipeData | undefined>();
 
   useEffect(() => {
@@ -34,14 +28,11 @@ const SmallRecipe: React.FC<SmallRecipeProps> = ({
 
   if (data === undefined) return <div></div>;
 
-  // Assuming 'data' contains the JSON data
   return (
-    <div className="flex h-[10%] w-full items-center justify-center">
-      <button onClick={() => setSpotlightId(Number(key))}>
-        <h1>{data[content]?.picture_link}</h1>
-      </button>
+    <div>
+      <h1>{data[content]?.picture_link}</h1>
     </div>
   );
 };
 
-export default SmallRecipe;
+export default LargeRecipe;

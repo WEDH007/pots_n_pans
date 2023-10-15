@@ -4,7 +4,7 @@ import Image from "next/image";
 const Loading = () => {
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-20">
-      <h1 className="shover:animate-jump font-indie text-4xl">
+      <h1 className="font-indie text-4xl hover:animate-jump">
         Cooking you a good recipe...
       </h1>
       <Image

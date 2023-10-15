@@ -11,7 +11,7 @@ const NotEnoughIngredients = ({
 }: NotEnoughIngredientsProps) => {
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-center">
-      <h1 className="font-indie text-3xl">Sorry :{`\u0028`}</h1>
+      <h1 className="font-indie text-4xl">Sorry :{`\u0028`}</h1>
       <h1 className="mb-10 font-indie text-3xl">
         We couldn{`\u0027`}t find enough ingredients in your picture to prepare
         a recipe

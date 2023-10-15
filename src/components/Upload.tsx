@@ -4,22 +4,26 @@ import Loading from "./Loading";
 import RecipesData from "./RecipesData";
 import FallingVeggies from "./FallingVeggies";
 
+interface Recipes {
+  delayTime: number;
+  executionTime: number;
+  id: string;
+  output: string[];
+  status: string;
+}
+
 const Upload = () => {
   const [fileUpload, setFileUpload] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingDone, setIsLoadingDone] = useState(false);
-  const [recipesData, setRecipesData] = useState({});
+  const [recipesData, setRecipesData] = useState<Recipes>();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     setFileUpload(selectedFile ?? null);
   };
 
-  interface ApiResponse {
-    status: string;
-  }
-
-  async function waitForResponse(apiCall: Promise<ApiResponse>) {
+  async function waitForResponse(apiCall: Promise<Recipes>) {
     const response = await apiCall;
 
     console.log(response);
@@ -32,16 +36,16 @@ const Upload = () => {
     }
   }
 
-  const handleFileUpload = () => {
+  function uploadFile() {
     if (
       fileUpload &&
       fileUpload instanceof File &&
       fileUpload.type.startsWith("image/")
     ) {
       const reader = new FileReader();
-      reader.onload = function (event) {
+      reader.onload = async function (event) {
         const base64Image = (event.target?.result as string).split(",")[1];
-        console.log(base64Image);
+        console.log();
         if (base64Image) {
           const requestBody = {
             input: {
@@ -49,46 +53,32 @@ const Upload = () => {
               threshold: 0.3,
             },
           };
+          console.log(base64Image);
+
           setIsLoading(true);
-          console.log(requestBody);
-          return waitForResponse(
-            fetch("https://api.runpod.ai/v2/mi1w7cfskbr6up/runsync", {
+
+          const request = await fetch(
+            "https://api.runpod.ai/v2/mi1w7cfskbr6up/runsync",
+            {
               method: "POST",
               body: JSON.stringify(requestBody),
               headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${process.env.NEXT_PUBLIC_RUNPOD_API_KEY}`,
               },
-            }).then((res: Response) => {
-              return res.json() as Promise<ApiResponse>;
-            }),
-          ).then((data: ApiResponse) => {
-            setIsLoading(false);
-            setIsLoadingDone(true);
-            setRecipesData(data);
-          });
-          //   fetch("https://api.runpod.ai/v2/mi1w7cfskbr6up/run", {
-          //     method: "POST",
-          //     body: JSON.stringify(requestBody),
-          //     headers: {
-          //       "Content-Type": "application/json",
-          //       Authorization: `Bearer ${process.env.NEXT_PUBLIC_RUNPOD_API_KEY}`,
-          //     },
-          //   })
-          //     .then((res) => res.json())
-          //     .then((data) => {
-          //       console.log(data);
-          //       // Handle response here
-          //     })
-          //     .catch((err) => {
-          //       console.error("Error while uploading image:", err);
-          //       // Handle the error or provide feedback to the user
-          //     });
+            },
+          );
+
+          const data = (await request.json()) as Recipes;
+
+          setIsLoading(false);
+          setIsLoadingDone(true);
+          setRecipesData(data);
         }
       };
       reader.readAsDataURL(fileUpload);
     }
-  };
+  }
 
   return (
     <>
@@ -98,7 +88,7 @@ const Upload = () => {
         ) : (
           <div>
             <NotLoading
-              handleFileUpload={handleFileUpload}
+              handleFileUpload={uploadFile}
               handleFileChange={handleFileChange}
             />
           </div>

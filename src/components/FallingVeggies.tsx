@@ -23,7 +23,7 @@ const FallingVeggies = () => {
   return (
     <section className="absolute -z-[10] flex h-full w-full items-center justify-between overflow-hidden">
       <div className="pointer-events-none absolute left-0 top-0 flex h-full w-full items-center justify-around overflow-hidden">
-        <div className="animate-falling1">
+        <div className="animate-falling">
           <Image
             src="./images/broccoli.svg"
             width={75}
@@ -31,11 +31,11 @@ const FallingVeggies = () => {
             alt="broccoli"
           />
         </div>
-        <div className="animate-falling">
+        <div className="animate-falling1">
           <Image
             src="./images/banana.svg"
-            width={50}
-            height={50}
+            width={60}
+            height={60}
             alt="banana"
           />
         </div>
@@ -47,55 +47,31 @@ const FallingVeggies = () => {
             alt="cherry"
           ></Image>
         </div>
-        <div className="animate-falling2">
-          <Image
-            src="./images/broccoli.svg"
-            width={100}
-            height={100}
-            alt="broccoli"
-          />
-        </div>
         <div className="animate-falling3">
           <Image
             src="./images/broccoli.svg"
-            width={50}
-            height={50}
-            alt="broccoli"
-          />
-        </div>
-        <div className="animate-falling3">
-          <Image
-            src="./images/cherry.svg"
-            width={50}
-            height={50}
-            alt="cherry"
-          ></Image>
-        </div>
-        <div className="animate-falling">
-          <Image
-            src="./images/banana.svg"
-            width={40}
-            height={40}
-            alt="banana"
-          />
-        </div>
-        <div className="animate-falling">
-          <Image
-            src="./images/banana.svg"
             width={80}
             height={80}
-            alt="banana"
-          />
-        </div>
-        <div className="animate-falling2">
-          <Image
-            src="./images/broccoli.svg"
-            width={100}
-            height={100}
             alt="broccoli"
           />
         </div>
         <div className="animate-falling">
+          <Image
+            src="./images/broccoli.svg"
+            width={70}
+            height={70}
+            alt="broccoli"
+          />
+        </div>
+        <div className="animate-falling1">
+          <Image
+            src="./images/cherry.svg"
+            width={60}
+            height={60}
+            alt="cherry"
+          ></Image>
+        </div>
+        <div className="animate-falling2">
           <Image
             src="./images/banana.svg"
             width={50}
@@ -104,6 +80,22 @@ const FallingVeggies = () => {
           />
         </div>
         <div className="animate-falling">
+          <Image
+            src="./images/broccoli.svg"
+            width={80}
+            height={80}
+            alt="broccoli"
+          />
+        </div>
+        <div className="animate-falling1">
+          <Image
+            src="./images/banana.svg"
+            width={60}
+            height={60}
+            alt="banana"
+          />
+        </div>
+        <div className="animate-falling2">
           <Image
             src="./images/cherry.svg"
             width={50}
@@ -114,16 +106,24 @@ const FallingVeggies = () => {
         <div className="animate-falling3">
           <Image
             src="./images/broccoli.svg"
-            width={50}
-            height={50}
+            width={80}
+            height={80}
             alt="broccoli"
           />
         </div>
         <div className="animate-falling">
           <Image
+            src="./images/banana.svg"
+            width={70}
+            height={70}
+            alt="banana"
+          />
+        </div>
+        <div className="animate-falling1">
+          <Image
             src="./images/cherry.svg"
-            width={50}
-            height={50}
+            width={70}
+            height={70}
             alt="cherry"
           ></Image>
         </div>

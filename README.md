@@ -20,3 +20,4 @@ We hope to promote our website with the intention of adding more users to our sy
 - run `npm run dev`
 - Open a browser and navigate to `localhost:3000` to play around with our web app
 - NOTE: You will need an API key to fetch data from our backend. Reach out to us if you're interested!
+

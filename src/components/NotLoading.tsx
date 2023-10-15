@@ -17,7 +17,7 @@ const NotLoading: React.FC<NotLoadingProps> = ({
       <div className="flex gap-20">
         <div className="delay-80 flex flex-row items-center justify-center rounded-full bg-red-100 py-3 pl-10 pr-4 drop-shadow-xl transition-colors duration-500 hover:bg-green-300">
           <input
-            className="font-indie text-xl"
+            className="font-indie text-xl "
             type="file"
             accept="image/*"
             onChange={handleFileChange}

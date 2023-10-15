@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import fs from "fs";
 
 interface SmallRecipeProps {
-  key: string;
+  id: string;
   content: string;
   setSpotlightId: React.Dispatch<React.SetStateAction<number | undefined>>;
+  printId: (id: number) => void;
 }
 
 type RecipeData = Record<
@@ -17,9 +17,10 @@ type RecipeData = Record<
 >;
 
 const SmallRecipe: React.FC<SmallRecipeProps> = ({
-  key,
+  id,
   content,
   setSpotlightId,
+  printId,
 }) => {
   const [data, setData] = useState<RecipeData | undefined>();
 
@@ -36,9 +37,15 @@ const SmallRecipe: React.FC<SmallRecipeProps> = ({
 
   // Assuming 'data' contains the JSON data
   return (
-    <div className="flex h-[10%] w-full items-center justify-center">
-      <button onClick={() => setSpotlightId(Number(key))}>
-        <h1>{data[content]?.picture_link}</h1>
+    <div className="mb-4 mr-2 flex h-[20%] w-full min-w-[200px] items-start justify-center overflow-scroll rounded-[15px] bg-green-300 px-4 py-3 text-left drop-shadow-lg transition ease-in-out hover:translate-x-2 ">
+      <button
+        className="h-full w-full"
+        onClick={() => {
+          setSpotlightId(Number(id));
+          printId(Number(id));
+        }}
+      >
+        <h1 className="font-indie text-2xl text-black">{content}</h1>
       </button>
     </div>
   );

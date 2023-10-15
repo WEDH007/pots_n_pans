@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-
+import Image from "next/image";
 export interface SmallRecipeProps {
   key: string;
   content: string;
+  printId: (id: number) => void;
 }
 
 type RecipeData = Record<
@@ -14,7 +15,7 @@ type RecipeData = Record<
   }
 >;
 
-const LargeRecipe = ({ key, content }: SmallRecipeProps) => {
+const LargeRecipe = ({ key, content, printId }: SmallRecipeProps) => {
   const [data, setData] = useState<RecipeData | undefined>();
 
   useEffect(() => {
@@ -29,8 +30,24 @@ const LargeRecipe = ({ key, content }: SmallRecipeProps) => {
   if (data === undefined) return <div></div>;
 
   return (
-    <div>
-      <h1>{data[content]?.picture_link}</h1>
+    <div
+      onMouseEnter={() => printId(Number(key))}
+      className="h-full overflow-scroll rounded-[30px] bg-green-100 px-9 py-9 drop-shadow-lg"
+    >
+      <h1 className="font-indie text-4xl font-bold">{content}</h1>
+      <hr className="border-t-2 border-green-500" />
+      <h1 className="mt-5 font-indie text-2xl font-bold">Ingredients:</h1>
+      <ul>
+        {data[content]?.ingredients.map((ingredient, index) => (
+          <li key={index.toString()} className="flex items-center">
+            <h1 className="text-md font-indie font-bold">
+              {ingredient.substring(0, ingredient.length - 13)}
+            </h1>
+          </li>
+        ))}
+      </ul>
+      <h1 className="mt-5 font-indie text-2xl font-bold">Instructions:</h1>
+      <h1 className="text-md font-indie">{data[content]?.instructions}</h1>
     </div>
   );
 };

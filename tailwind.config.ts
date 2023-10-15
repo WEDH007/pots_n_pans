@@ -10,10 +10,10 @@ const config: Config = {
       },
       animation: {
         jump: "jump 0.3s",
-        falling: "falling 30s linear infinite",
+        falling: "falling 20s linear infinite",
         falling1: "falling1 34s linear infinite",
-        falling2: "falling2 32s linear infinite",
-        falling3: "falling3 35s linear infinite",
+        falling2: "falling2 42s linear infinite",
+        falling3: "falling3 32 linear infinite",
         wiggle: "wiggle 1s ease-in-out infinite",
       },
       keyframes: {
@@ -80,7 +80,7 @@ const config: Config = {
           "20%": { transform: "translateY(-375px) rotate(45deg)" },
           "40%": { transform: "translateY(-375px) rotate(90deg)" },
           "60%": { transform: "translateY(375px) rotate(180deg)" },
-          "80%": { transform: "translateY(-375px) rotate(180deg)" },
+          "80%": { transform: "translateY(-37px) rotate(180deg)" },
           "100%": {
             transform: "translateY(-450px) rotate(225deg)",
             top: "110%",

@@ -1,6 +1,7 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import NotEnoughIngredients from "./NotEnoughIngredients";
 import SmallRecipe from "./SmallRecipe";
+import LargeRecipe from "./LargeRecipe";
 
 export interface Recipes {
   // Define the type for each recipe object
@@ -22,27 +23,49 @@ const RecipesData = ({ recipesData, setIsLoadingDone }: RecipesDataProps) => {
   if (!recipesData) return null;
   if (recipesData.output.length === 0)
     return <NotEnoughIngredients onClick={() => setIsLoadingDone(false)} />;
+
+  // function shuffleArray<T>(array: Array<T>): Array<T> {
+  //   for (let i = array.length - 1; i > 0; i--) {
+  //     const j = Math.floor(Math.random() * (i + 1));
+  //     [array[i], array[j]] = [array[j], array[i]] as [T, T];
+  //   }
+  //   return array;
+  // }
+
   return (
     <div className="z-10 h-screen px-20 py-10">
-      <div className=" h-full flex-col items-center justify-around rounded-[40px] bg-white pb-20 pt-10 drop-shadow-lg">
-        <div className="my-4 flex items-center justify-center font-indie text-4xl font-bold ">
+      <div className=" h-full flex-col items-center rounded-[40px] bg-white pb-20 pt-10 drop-shadow-lg">
+        <div className="my-8 flex items-center justify-center font-indie text-4xl font-bold ">
           {recipesData.output.length} recipes fresh out of the oven!
         </div>
-        <div className="mb-20 flex w-full flex-row items-center justify-center">
-          {recipesData.output.map(
-            (recipe, index) =>
-              index < 9 &&
-              Number(recipesData.id) != spotlightId && (
+        <div className="flex">
+          <div className="max-w-1/2 mx-20 max-h-[460px] w-[50%] overflow-scroll rounded-[15px] bg-white pb-2">
+            <LargeRecipe
+              key={spotlightId?.toString() ?? "0"}
+              content={recipesData.output[spotlightId ?? 0] ?? ""}
+              printId={() => {
+                console.log(spotlightId);
+              }}
+            />
+          </div>
+          <div className="mb-20 mr-20 flex h-full max-h-[460px] w-1/2 max-w-[30%] flex-row flex-wrap items-start justify-center gap-5 overflow-scroll">
+            {recipesData.output.map((recipe, index) =>
+              index < 10 && index !== spotlightId ? (
                 <SmallRecipe
-                  key={`${recipesData.id}-${index}`}
+                  key={index.toString()}
+                  id={index.toString()}
                   content={recipe}
                   setSpotlightId={setSpotlightId}
+                  printId={() => {
+                    console.log(index);
+                  }}
                 />
-              ),
-          )}
+              ) : null,
+            )}
+          </div>
         </div>
       </div>
-      <div className="flex flex-col items-center justify-around">
+      <div className="mx-20 flex flex-col items-start justify-around">
         <button
           onClick={() => {
             setIsLoadingDone(false);

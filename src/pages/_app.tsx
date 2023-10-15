@@ -8,7 +8,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <Link href="/">
-        <div className=" delay-80 fixed right-10 top-10 transform-gpu rounded-full bg-white px-0  py-1 drop-shadow-lg transition ease-in-out hover:-translate-y-2 hover:scale-105">
+        <div className=" delay-80 fixed right-10 top-10 z-10 transform-gpu rounded-full bg-white px-0  py-1 drop-shadow-lg transition ease-in-out hover:-translate-y-2 hover:scale-105">
           <Image
             src="./images/favicon.svg"
             alt="logo"

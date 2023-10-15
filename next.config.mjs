@@ -17,6 +17,9 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    domains: ["53.fs1.hubspotusercontent-na1.net", "images.unsplash.com"],
+  },
 };
 
 export default config;

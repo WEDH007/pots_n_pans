@@ -40,7 +40,7 @@ const Upload = () => {
           setIsLoading(true);
 
           const request = await fetch(
-            "https://api.runpod.ai/v2/5iuu46hwigidsv/runsync",
+            "https://api.runpod.ai/v2/mi1w7cfskbr6up/runsync",
             {
               method: "POST",
               body: JSON.stringify(requestBody),

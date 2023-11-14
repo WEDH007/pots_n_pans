@@ -4,6 +4,7 @@ Let's Cook! is a website that offers an effortless way for users to minimize foo
 
 <img width="1294" alt="Untitled" src="https://github.com/ghubnerr/pots_n_pans/assets/144561702/c9acc9d9-0100-4b78-958b-9a0fcb5dc837">
 
+
 ## How we built it?
 The backend uses a microservices and serverless architecture approach. It is packaged in a Docker container and deployed on RunPod. Some microservices include Ultralytic’s YOLOv8 object detection model and a recipe finder module. The orchestration of these microservices are controlled through a single serverless function which determines the exposed parameters.
 The frontend is built using Next.js, leverages Tailwind CSS for efficient styling, and uses TypeScript for improved code quality. This interfaces with the backend through an API call, passing it a base64 image and getting a list of possible recipes which are then displayed for the user to browse through.

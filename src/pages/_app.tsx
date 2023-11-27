@@ -19,12 +19,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       </Link>
       <Component {...pageProps} />
       <FallingVeggies></FallingVeggies>
-      <Link className="absolute bottom-20 -z-[10] " href="/">
-        <h1 className=" font-indie text-3xl">Pots n&apos; Pans</h1>
-      </Link>
-      <h2 className="absolute bottom-10 -z-[10] font-indie text-xl ">
-        Made with {"\u2764"} by Jun, Gabriel, Alyssa, and Andrea
-      </h2>
     </div>
   );
 };

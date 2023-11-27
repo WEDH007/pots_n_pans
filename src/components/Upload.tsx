@@ -5,7 +5,6 @@ import RecipesData from "./RecipesData";
 import FallingVeggies from "./FallingVeggies";
 import { type Recipes } from "./RecipesData";
 
-
 const Upload = () => {
   const [fileUpload, setFileUpload] = useState<File | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +32,7 @@ const Upload = () => {
           const requestBody = {
             input: {
               img: base64Image,
-              threshold: 0.3,
+              threshold: 0.45,
             },
           };
           console.log(base64Image);
@@ -62,7 +61,6 @@ const Upload = () => {
       reader.readAsDataURL(fileUpload);
     }
   }
-
   return (
     <>
       {!isLoadingDone ? (
